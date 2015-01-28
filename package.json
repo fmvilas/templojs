@@ -1,0 +1,45 @@
+{
+  "name": "templo",
+  "version": "0.1.0",
+  "main": "lib/templo.js",
+  "description": "A module to define templates for JSON data.",
+  
+  "homepage": "https://github.com/fmvilas/templo",
+
+  "bugs": "https://github.com/fmvilas/templo/issues",
+  "author": {
+    "name": "Francisco Méndez Vilas",
+    "email": "fmvilas@gmail.com",
+    "url": "http://www.fmvilas.com" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fmvilas/templo"
+  },
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "templo",
+    "templojs",
+    "json",
+    "template" 
+  ],
+  "dependencies": {
+    "moment": "2.8.3"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "0.10.0",
+    "grunt-contrib-nodeunit": "0.3.3",
+    "grunt-contrib-watch": "0.6.1",
+    "load-grunt-tasks": "0.4.0",
+    "time-grunt": "0.3.1",
+    "grunt-mocha-cli": "1.9.0",
+    "jshint-stylish": "0.2.0" 
+  },
+  "scripts": {
+    "test": "grunt" 
+  },
+  "preferGlobal": "false"
+}
