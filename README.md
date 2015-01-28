@@ -1,23 +1,23 @@
-#  [![Build Status](https://secure.travis-ci.org/fmvilas/json-tpl.png?branch=master)](http://travis-ci.org/fmvilas/json-tpl)
+#  [![Build Status](https://secure.travis-ci.org/fmvilas/templojs.png?branch=master)](http://travis-ci.org/fmvilas/templojs)
 
-> A module to define templates for JSON data.
+> A lightweight module to define templates for JSON data.
 
 
 ## Getting Started
 
-Install the module with: `npm install json-tpl`
+Install the module with: `npm install templo`
 
 ```js
-var jsonTpl = require('json-tpl'),
+var templo = require('templo'),
     tpl = {
         id:         { type: 'number' },
         name:       { type: 'string' },
         avatar_url: { type: 'string', default: null }
     };
 
-jsonTpl.parse(tpl, {
+templo.parse(tpl, {
     id: 1,
-    name: 'Fran'    
+    name: 'Fran'
 });
 ```
 
@@ -43,4 +43,4 @@ Copyright (c) 2014 Francisco Méndez Vilas
 Licensed under the MIT license.
 
 
-[![Analytics](https://ga-beacon.appspot.com/UA-56319615-1/json-tpl/readme)](https://github.com/fmvilas/json-tpl)
+[![Analytics](https://ga-beacon.appspot.com/UA-59082921-1/templojs/readme)](https://github.com/fmvilas/templojs)
