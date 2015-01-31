@@ -9,6 +9,7 @@ var assert = require('assert'),
     templo = require('../lib/templo.js'),
     user_show_template,
     user_create_template,
+    params_template,
     user_data,
     result;
 
@@ -31,6 +32,11 @@ describe('TemploJS', function() {
       avatar_url: { type: 'string', default: null },
       created_at: { type: 'string', read_only: true, default: 'timestamp' },
       updated_at: { type: 'string', read_only: true, default: 'timestamp' }
+    };
+
+    params_template = {
+      visibility: { type: 'string' },
+      ownership:  { type: 'string' }
     };
 
     user_data = {
@@ -83,6 +89,14 @@ describe('TemploJS', function() {
       result = templo.render(user_create_template, user_data);
 
       assert.strictEqual(result.warnings, false);
+    });
+
+    it('should ignore non-required attributes that does not have default value nor passed data', function() {
+      result = templo.render(params_template, {});
+
+      assert.strictEqual(result.status, 'ok');
+      assert.strictEqual(result.output.hasOwnProperty('visibility'), false);
+      assert.strictEqual(result.output.hasOwnProperty('ownership'), false);
     });
   });
 });
