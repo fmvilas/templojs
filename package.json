@@ -2,11 +2,11 @@
   "name": "templo",
   "version": "0.2.1",
   "main": "lib/templo.js",
-  "description": "A module to define templates for JSON data.",
+  "description": "A lightweight module to define templates for JSON data.",
   
-  "homepage": "https://github.com/fmvilas/templo",
+  "homepage": "https://github.com/fmvilas/templojs",
 
-  "bugs": "https://github.com/fmvilas/templo/issues",
+  "bugs": "https://github.com/fmvilas/templojs/issues",
   "author": {
     "name": "Francisco Méndez Vilas",
     "email": "fmvilas@gmail.com",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fmvilas/templo"
+    "url": "https://github.com/fmvilas/templojs"
   },
   "license": "MIT",
   "files": [
