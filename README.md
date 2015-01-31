@@ -10,26 +10,46 @@ Install the module with: `npm install templo`
 ```js
 var templo = require('templo'),
     tpl = {
-        id:         { type: 'number' },
-        name:       { type: 'string' },
-        avatar_url: { type: 'string', default: null }
+        id:         { type: 'string', required: true },
+        name:       { type: 'string', required: true },
+        avatar_url: { type: 'string', default: null },
+        created_at: { type: 'string', read_only: true, default: 'timestamp' }
     };
 
-templo.parse(tpl, {
+templo.render(tpl, {
     id: 1,
-    name: 'Fran'
+    name: 'Fran',
+    created_at: '2012-03-01'
 });
+
+// It will return something like this:
+
+{
+    status: 'ok',
+    output: {
+        id: '1',
+        name: 'Fran',
+        avatar_url: null,
+        created_at: '2014-10-25T21:09:02Z'
+    },
+    warnings: {
+        created_at: {
+            message: "Can't modify read only attribute <created_at>."
+        }
+    }
+}
+
 ```
 
 
 ## Documentation
 
-_(Coming soon)_
+Do you like TemploJS? You can contribute and help documenting it.
 
 
 ## Examples
 
-_(Coming soon)_
+Do you like TemploJS? You can contribute and add some examples on how to use it.
 
 
 ## Contributing
