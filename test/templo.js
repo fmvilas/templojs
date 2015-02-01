@@ -10,6 +10,7 @@ var assert = require('assert'),
     user_show_template,
     user_create_template,
     params_template,
+    alias_template,
     user_data,
     result;
 
@@ -37,6 +38,12 @@ describe('TemploJS', function() {
     params_template = {
       visibility: { type: 'string' },
       ownership:  { type: 'string' }
+    };
+
+    alias_template = {
+      visibility: { type: 'string' },
+      ownership:  { type: 'string' },
+      id:         { type: 'string', alias: '_id', required: true }
     };
 
     user_data = {
@@ -97,6 +104,15 @@ describe('TemploJS', function() {
       assert.strictEqual(result.status, 'ok');
       assert.strictEqual(result.output.hasOwnProperty('visibility'), false);
       assert.strictEqual(result.output.hasOwnProperty('ownership'), false);
+    });
+
+    it('should use an alias', function() {
+      result = templo.render(alias_template, { id: 'f98asd7f798f8' });
+
+      assert.strictEqual(result.status, 'ok');
+      assert.strictEqual(result.output.hasOwnProperty('visibility'), false);
+      assert.strictEqual(result.output.hasOwnProperty('ownership'), false);
+      assert.strictEqual(result.output.id, 'f98asd7f798f8');
     });
   });
 });
