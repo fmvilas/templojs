@@ -74,15 +74,15 @@ describe('TemploJS', function() {
 
       assert.strictEqual(result.status, 'ok');
       assert.strictEqual(typeof result.warnings, 'object');
-      assert.strictEqual(result.warnings.created_at.message, 'Can\'t modify read only attribute <created_at>.');
-      assert.strictEqual(result.warnings.updated_at.message, 'Can\'t modify read only attribute <updated_at>.');
+      assert.strictEqual(result.warnings.created_at.message, 'Can\'t modify read only parameter <created_at>.');
+      assert.strictEqual(result.warnings.updated_at.message, 'Can\'t modify read only parameter <updated_at>.');
     });
 
-    it('should fail if a required attribute is not passed', function() {
+    it('should fail if a required parameter is not passed', function() {
       result = templo.render(user_create_template, user_data);
 
       assert.strictEqual(result.status, 'error');
-      assert.strictEqual(result.errors.password.message, 'Missing required attribute <password>.');
+      assert.strictEqual(result.errors.password.message, 'Missing required parameter <password>.');
     });
 
     it('should respond with warnings as false if there is no warnings', function() {
@@ -91,7 +91,7 @@ describe('TemploJS', function() {
       assert.strictEqual(result.warnings, false);
     });
 
-    it('should ignore non-required attributes that does not have default value nor passed data', function() {
+    it('should ignore non-required paramters that does not have default value nor passed data', function() {
       result = templo.render(params_template, {});
 
       assert.strictEqual(result.status, 'ok');
