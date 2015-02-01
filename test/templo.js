@@ -43,7 +43,7 @@ describe('TemploJS', function() {
     alias_template = {
       visibility: { type: 'string' },
       ownership:  { type: 'string' },
-      id:         { type: 'string', alias: '_id', required: true }
+      _id:        { type: 'string', alias: 'id', required: true }
     };
 
     user_data = {
@@ -112,7 +112,7 @@ describe('TemploJS', function() {
       assert.strictEqual(result.status, 'ok');
       assert.strictEqual(result.output.hasOwnProperty('visibility'), false);
       assert.strictEqual(result.output.hasOwnProperty('ownership'), false);
-      assert.strictEqual(result.output.id, 'f98asd7f798f8');
+      assert.strictEqual(result.output._id, 'f98asd7f798f8');
     });
   });
 });
