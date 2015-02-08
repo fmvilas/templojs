@@ -1,6 +1,6 @@
 {
   "name": "templo",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "main": "lib/templo.js",
   "description": "A lightweight module to define templates for JSON data.",
   
