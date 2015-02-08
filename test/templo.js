@@ -12,6 +12,8 @@ var assert = require('assert'),
     params_template,
     alias_template,
     user_data,
+    validateVisibility,
+    visibility_example,
     result;
 
 describe('TemploJS', function() {
@@ -24,7 +26,6 @@ describe('TemploJS', function() {
       created_at: { type: 'string', required: true },
       updated_at: { type: 'string', required: true }
     };
-
 
     user_create_template = {
       email:      { type: 'string', required: true },
@@ -44,6 +45,21 @@ describe('TemploJS', function() {
       visibility: { type: 'string' },
       ownership:  { type: 'string' },
       _id:        { type: 'string', alias: 'id', required: true }
+    };
+
+    validateVisibility = function(visibility) {
+      var is_valid = visibility === undefined || visibility === 'public' || visibility === 'private';
+      return is_valid || {
+        errors: {
+          visibility: {
+            message: 'If specified, <visibility> must be either "public" or "private".'
+          }
+        }
+      };
+    };
+
+    visibility_example = {
+      visibility: { type: 'string', validate_with: validateVisibility }
     };
 
     user_data = {
@@ -113,6 +129,21 @@ describe('TemploJS', function() {
       assert.strictEqual(result.output.hasOwnProperty('visibility'), false);
       assert.strictEqual(result.output.hasOwnProperty('ownership'), false);
       assert.strictEqual(result.output._id, 'f98asd7f798f8');
+    });
+
+    it('should accept a validation function', function() {
+      result = templo.render(visibility_example, { visibility: 'public' });
+
+      assert.strictEqual(result.status, 'ok');
+      assert.strictEqual(result.output.hasOwnProperty('visibility'), true);
+      assert.strictEqual(result.output.visibility, 'public');
+    });
+
+    it('should return an error if validation fails', function() {
+      result = templo.render(visibility_example, { visibility: 'should fail' });
+
+      assert.strictEqual(result.status, 'error');
+      assert.strictEqual(result.errors.visibility.message, 'If specified, <visibility> must be either "public" or "private".');
     });
   });
 });
